@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saborytec | Bienvenida</title>
+  <link rel="stylesheet" href="../css/bienvenida.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo"><h1>SABORYTEC</h1></div>
+
+    <nav class="nav">
+      <a href="#">Inicio</a>
+      <a href="#">Explorar</a>
+      <a href="#">Catálogo</a>
+      <a href="#">Compras</a>
+      <a href="#">Pedidos</a>
+      <a href="#">Historial</a>
+      <a href="#">Carrito</a>
+    </nav>
+
+    <button class="login-btn">Mi perfil</button>
+  </header>
+
+  
+  <div class="scroll">
+
+    <!-- LOGO + TITULOS -->
+    <img src="../Assets/img/Logo_ITSSMT.png" class="logob" alt="Logo Saborytec">
+
+    <h2 class="titulo">INSTITUTO TECNOLÓGICO SUPERIOR</h2>
+    <h2 class="titulo">DE SAN MARTÍN TEXMELUCAN</h2>
+
+    <!-- BOTON -->
+    <button class="botonIniciar" onclick="window.location.href='{{ url('/login') }}'">
+      <span class="botonText">INICIAR SESIÓN</span>
+    </button>
+
+    <p class="modoInvitado">
+      ✦ Plataforma oficial para realizar pedidos anticipados de productos y comida.
+    </p>
+
+  </div>
+
+
+  <!-- SECCIÓN 1 -->
+  <section class="container">
+    <div class="cards">
+
+      <div class="card blocked">
+        <img src="../Assets/img/relog.png" alt="Pedidos Anticipados">
+        <h3>Pedidos Anticipados</h3>
+        <p>Realiza tu pedido con anticipación y recógelo rápido y sin filas.</p>
+      </div>
+
+      <div class="card blocked">
+        <img src="../Assets/img/carrito.png" alt="Variedad de productos">
+        <h3>Variedad de Productos</h3>
+        <p>Bebidas, comida y antojos. Todo en un solo lugar.</p>
+      </div>
+
+      <div class="card blocked">
+        <img src="../Assets/img/pagos.png" alt="Pagos seguros">
+        <h3>Pago Seguro</h3>
+        <p>Paga por transferencia o en efectivo al recoger tu pedido.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footerText">
+      © 2025 ITSSMT. Todos los derechos reservados. Autores: FREDY & VICTOR
+    </p>
+  </footer>
+
+</body>
+</html>

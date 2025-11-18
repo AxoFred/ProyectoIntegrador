@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f2f6fc;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1300px;
+    margin: 40px auto;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #222;
+}
+
+.icono-titulo {
+    font-size: 40px;
+    background: #6f4cff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.subtitulo {
+    margin-top: -10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.cards {
+    display: flex;
+    gap: 25px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+/* CARD BASE */
+.card {
+    width: 28%;
+    min-height: 180px;
+    border-radius: 18px;
+    padding: 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 10px 20px #0002;
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ICONO */
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: #ffffff33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 32px;
+}
+
+/* PRODUCTOS */
+.productos {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ffffff55;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* GRADIENTES */
+.card-cafeteria {
+    background: linear-gradient(90deg, #ff7a3d, #ff4378);
+}
+
+.card-externos {
+    background: linear-gradient(90deg, #11a7ff, #2cc5b8);
+}
+
+.card-estudiantil {
+    background: linear-gradient(90deg, #b14cff, #ff4fa3);
+}
+
+/* TEXTOS DENTRO DE LA CARD */
+.card h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.card p {
+    margin-top: -5px;
+    font-size: 1rem;
+}
+
+/* BUSCADOR */
+.buscador {
+    margin-top: 40px;
+    background: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px #0001;
+}
+
+.buscador input {
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.buscador i {
+    font-size: 22px;
+    color: #777;
+}
+
+/* RESPONSIVO */
+@media(max-width: 900px) {
+    .card {
+        width: 100%;
+    }
+}

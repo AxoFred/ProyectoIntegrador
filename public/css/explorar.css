@@ -1,0 +1,319 @@
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: .88rem;
+  color: #ccc;
+}
+
+.overlay {
+  background: linear-gradient(#0009, #000c);
+}
+
+.img {
+  background: url('../Assets/img/fondo1.jpeg') center/cover fixed;
+}
+
+
+/* --- HEADER --- */
+/*header*/
+.header {
+  background-color: #1a1919ff;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #cccccc99;
+  border-top: 1px solid #cccccc99;
+  box-shadow: 0 0 45px 0 #cccccc99;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.nav a {
+  text-decoration: none;
+  background: none;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  font-size: 13px;
+}
+
+.nav a:hover {
+  border-bottom: 3px solid #fff;
+  color: #fff;
+}
+
+/* === AGREGADO: Centrar nav en el header === */
+.nav {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto; /* centra el nav */
+}
+
+.login-btn {
+  text-decoration: none;
+  background: none;
+  color: #fdfdfd;
+  border-bottom: 1px solid #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.login-btn:hover {
+  border: 0;
+  border-bottom: 3px solid #fff;
+  color: #fff;
+}
+
+/* === AGREGADO: Contenedor para agrupar los botones a la derecha === */
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/*fin header*/
+
+/*section 1*/
+
+.contenedor {
+    width: 90%;
+    max-width: 1300px;
+    margin: 40px auto;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.icono-titulo {
+    font-size: 40px;
+    background: #376072;
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.subtitulo {
+    margin-top: -10px;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.cards1 {
+    display: flex;
+    gap: 25px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+/* CARD BASE */
+.card1 {
+    width: 28%;
+    min-height: 180px;
+    border-radius: 18px;
+    padding: 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 10px 20px #0002;
+    transition: transform .2s;
+}
+
+.card1:hover {
+    transform: translateY(-5px);
+}
+
+/* ICONO */
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: #ffffff33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 32px;
+}
+
+/* PRODUCTOS */
+.productos {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ffffff55;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* GRADIENTES */
+.card-cafeteria {
+    background: linear-gradient(90deg, #000000,#376072,#000000);
+}
+
+.card-externos {
+    background: linear-gradient(90deg, #000000, #376072,#000000);
+}
+
+.card-estudiantil {
+    background: linear-gradient(90deg, #000000, #376072,#000000);
+}
+
+/* TEXTOS DENTRO DE LA CARD */
+.card1 h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.card1 p {
+    margin-top: -5px;
+    font-size: 1rem;
+}
+
+/* BUSCADOR */
+.buscador {
+    margin-top: 40px;
+    background: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px #0001;
+}
+
+.buscador input {
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.buscador i {
+    font-size: 22px;
+    color: #777;
+}
+
+/* RESPONSIVO */
+@media(max-width: 900px) {
+    .card1 {
+        width: 100%;
+    }
+}
+ /*section productos*/
+
+ /* inicio del catalogo*/
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.empty-state {
+  background: #121212;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px dashed #2b2b2b;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow .3s ease;
+  box-shadow: 0 0 5px 0 #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 28px 0 #ffffff;
+}
+
+.card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  color: #03b3ff;
+  margin: .5rem 0 0;
+}
+
+.card p {
+  color: #fff;
+  margin: .25rem 0;
+}
+
+.lock {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 8px;
+  background: #376072;
+  color: #000;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: .8rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #376072;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.5s ease;
+}
+/**fin del catalogo*/
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background-color: #1a1919ff;
+  padding: 12px;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #cccccc33;
+}
+
+.footerText {
+  font-size: 12px;
+  opacity: 0.8;
+}

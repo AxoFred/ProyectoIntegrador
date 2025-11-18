@@ -1,0 +1,196 @@
+/* ===========================
+   GLOBAL
+=========================== */
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: url('../Assets/img/rebajado.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #e0e0e0;
+}
+
+
+/* ===========================
+   HEADER
+=========================== */
+/*header*/
+.header {
+  background-color: #1a1919ff;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #cccccc99;
+  border-top: 1px solid #cccccc99;
+  box-shadow: 0 0 45px 0 #cccccc99;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.nav a {
+  text-decoration: none;
+  background: none;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  font-size: 13px;
+}
+
+.nav a:hover {
+  border-bottom: 3px solid #fff;
+  color: #fff;
+}
+
+.login-btn {
+  text-decoration: none;
+  background: none;
+  color: #fdfdfd;
+  border-bottom: 1px solid #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.login-btn:hover {
+  border: 0;
+  border-bottom: 3px solid #fff;
+  color: #fff;
+}
+/*fin header*/
+
+
+/* ===========================
+   SCROLL + BIENVENIDA
+=========================== */
+.scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logob {
+  width: 260px;
+  height: 260px;
+  border-radius: 25px;
+  margin-top: 30px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+.titulo {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 5px 0;
+  text-shadow: 0 2px 10px #000;
+}
+
+.botonIniciar {
+  background-color: #376072;
+  padding: 12px 30px;
+  border-radius: 12px;
+  width: 260px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px #00000070;
+}
+
+.botonIniciar:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px #00000080;
+}
+
+.botonText {
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.modoInvitado {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #ffffff;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+
+/* ===========================
+   CARDS - FEATURES
+=========================== */
+.container {
+  max-width: 1200px;
+  margin: 17px auto;
+  padding: 0rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: #1a1a1aee;
+  text-align: center;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px #00000060;
+  border: 1px solid #ffffff22;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px #ffffff55;
+}
+
+.card img {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  color: #03b3ff;
+  font-size: 20px;
+  margin: 0.4rem 0;
+}
+
+.card p {
+  color: #ddd;
+  font-size: 14px;
+}
+
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background-color: #1a1919ff;
+  padding: 12px;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #cccccc33;
+}
+
+.footerText {
+  font-size: 12px;
+  opacity: 0.8;
+}
