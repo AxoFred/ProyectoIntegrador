@@ -1,138 +1,298 @@
 body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: #f2f6fc;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: url('../Assets/img/rebajado.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #e0e0e0;
 }
 
-.contenedor {
-    width: 90%;
-    max-width: 1300px;
-    margin: 40px auto;
+.sidebar {
+  position: fixed;
+  top: 0;                 /* sigue fijo */
+  left: 20px;
+  height: calc(90vh - 90px); /* restamos el header */
+  margin-top: 90px;      /* lo bajamos para que no toque el header */
+  width: 40px;
+  backdrop-filter: blur(25px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  padding: 20px 15px;
+  overflow: hidden;
+  transition: width 0.3s ease, height 0.3s ease;
+  color: white;
 }
 
-.titulo {
-    font-size: 2.5rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #222;
+.sidebar:hover {
+  width: 260px;
 }
 
-.icono-titulo {
-    font-size: 40px;
-    background: #6f4cff;
-    color: #fff;
-    padding: 10px;
-    border-radius: 15px;
+/* SEARCH BAR */
+.search-box {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.subtitulo {
-    margin-top: -10px;
-    font-size: 1rem;
-    color: #555;
+.sidebar:hover .search-box {
+  opacity: 1;
 }
 
-.cards {
-    display: flex;
-    gap: 25px;
-    margin-top: 35px;
-    flex-wrap: wrap;
+.search-box input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
 }
 
-/* CARD BASE */
-.card {
-    width: 28%;
-    min-height: 180px;
-    border-radius: 18px;
-    padding: 25px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    position: relative;
-    box-shadow: 0 10px 20px #0002;
-    transition: transform .2s;
+/* MENU LIST */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 25px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.menu li {
+  padding: 12px 10px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-/* ICONO */
-.card-icon {
-    width: 60px;
-    height: 60px;
-    background: #ffffff33;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    font-size: 32px;
+.menu li:hover {
+  background: rgba(255,255,255,0.2);
 }
 
-/* PRODUCTOS */
-.productos {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #ffffff55;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 14px;
+/* STATS */
+.stats {
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-/* GRADIENTES */
-.card-cafeteria {
-    background: linear-gradient(90deg, #ff7a3d, #ff4378);
+.sidebar:hover .stats {
+  opacity: 1;
 }
 
-.card-externos {
-    background: linear-gradient(90deg, #11a7ff, #2cc5b8);
+.stat {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
 }
 
-.card-estudiantil {
-    background: linear-gradient(90deg, #b14cff, #ff4fa3);
+.stat h3 {
+  margin: 0;
+  font-size: 18px;
 }
 
-/* TEXTOS DENTRO DE LA CARD */
-.card h2 {
-    margin-top: 20px;
-    font-size: 1.5rem;
+/* FOOTER */
+.sync {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-size: 13px;
 }
 
-.card p {
-    margin-top: -5px;
-    font-size: 1rem;
+.sidebar:hover .sync {
+  opacity: 1;
+}
+/********************************/
+/* MENÚ */
+.menu li {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: flex;body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: url('../Assets/img/rebajado.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #e0e0e0;
 }
 
-/* BUSCADOR */
-.buscador {
-    margin-top: 40px;
-    background: white;
-    padding: 14px 18px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 10px #0001;
+/* ========================== */
+/* SIDEBAR */
+/* ========================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 20px;
+  height: calc(90vh - 90px); /* restamos el header */
+  margin-top: 90px;          /* lo bajamos para que no toque el header */
+  width: 50px;               /* MINI MÁS DELGADO */
+  backdrop-filter: blur(25px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  padding: 20px 10px;        /* reducido por el ancho mini */
+  overflow: hidden;
+  transition: width 0.3s ease;
+  color: white;
 }
 
-.buscador input {
-    width: 100%;
-    border: none;
-    font-size: 1rem;
-    outline: none;
+.sidebar:hover {
+  width: 260px;              /* expandido */
 }
 
-.buscador i {
-    font-size: 22px;
-    color: #777;
+/* ========================== */
+/* SEARCH BAR */
+/* ========================== */
+.search-box {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-/* RESPONSIVO */
-@media(max-width: 900px) {
-    .card {
-        width: 100%;
-    }
+.sidebar:hover .search-box {
+  opacity: 1;
+}
+
+.search-box input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* ========================== */
+/* MENU */
+/* ========================== */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+.menu li {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.menu li:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ICONOS */
+.menu li i {
+  font-size: 20px;
+  width: 50px;               /* igual al ancho mini del sidebar */
+  text-align: center;
+}
+
+/* TEXTO OCULTO CUANDO EL SIDEBAR ES MINI */
+.menu li span {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, margin 0.2s ease;
+  margin-left: -10px;
+}
+
+/* TEXTO VISIBLE CUANDO EL SIDEBAR SE EXPANDE */
+.sidebar:hover .menu li span {
+  opacity: 1;
+  visibility: visible;
+  margin-left: 0;
+}
+
+/* ========================== */
+/* STATS */
+/* ========================== */
+.stats {
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .stats {
+  opacity: 1;
+}
+
+.stat {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* ========================== */
+/* FOOTER */
+/* ========================== */
+.sync {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-size: 13px;
+}
+
+.sidebar:hover .sync {
+  opacity: 1;
+}
+
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.menu li i {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+/* EL TEXTO DEL MENÚ (OCULTO CUANDO ESTÁ MINI) */
+.menu li span {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, margin 0.2s ease;
+  margin-left: -10px;
+}
+
+/* CUANDO EL SIDEBAR SE EXPANDE, MOSTRAR TEXTO */
+.sidebar:hover .menu li span {
+  opacity: 1;
+  visibility: visible;
+  margin-left: 0;
 }

@@ -5,29 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saborytec | Inicio</title>
     <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 <body class="overlay img">
+    
+        <!-- HEADER -->
+        @include('NavegationViews.header')
 
-    <!-- Encabezado -->
-  <header class="header">
-    <div class="logo"><h1>SABORYTEC</h1></div>
-
-    <nav class="nav">
-      <a href="{{ url('/inicio') }}">Inicio</a>
-      <a href="{{ url('/explorar') }}">Explorar</a>
-      <a href="{{ url('/carrito') }}">carrito</a>
-      <a href="{{ url('/pedidos') }}">Pedidos</a>
-      <a href="{{ url('/vendedor') }}">Vendedor</a>
-      <a href="{{ url('/administrador') }}">Administrador</a>
-    </nav>
-
-    <!-- AGREGADO: Contenedor para agrupar los botones a la derecha -->
-    <div class="header-buttons">
-        <button class="login-btn" onclick="window.location.href='{{ url('/perfil') }}'">Mi perfil</button>
-        <button class="login-btn" onclick="window.location.href='{{ url('/') }}'">Cerrar Sesion</button>
-    </div>
-
-  </header>
 
         <!-- CONTENIDO SCROLL -->
         <main class="scroll">

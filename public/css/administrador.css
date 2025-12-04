@@ -163,6 +163,7 @@ body {
 .opcion-card:hover {
   box-shadow: 0 0 25px #ffffffaa;
   background: #222222;
+  
 }
 
 .opcion-card i {
