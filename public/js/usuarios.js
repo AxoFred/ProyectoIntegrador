@@ -99,12 +99,17 @@ function agregarListenerFormUsuario(){
             })
             .then(res => res.json())
             .then(resp => {
-                if(resp.success){
-                    closeModal('modalAddUsuario');
-                    cargarUsuarios();
-                    formAddUser.reset();
-                } else alert("Error al registrar usuario");
-            });
+    console.log("RESPUESTA DEL SERVIDOR:", resp);
+
+    if(resp.success == true || resp.success == "1" || resp.success == 1){
+        closeModal('modalAddUsuario');
+        cargarUsuarios();
+        formAddUser.reset();
+    } else {
+        alert("Error al registrar usuario: " + (resp.message || resp.error || "Respuesta inválida"));
+    }
+});
+
         });
     }
 }

@@ -18,7 +18,8 @@ class UsuariosController extends Controller
     public function MostrarUsuarios()
     {
         try {
-            $usuarios = DB::connection('mysql')->table('usuarios')->get();
+            // Mostrar solo usuarios visibles
+            $usuarios = DB::connection('mysql')->table('usuarios')->where('visible', 1)->get();
             return response()->json($usuarios);
 
         } catch (Exception $e) {
@@ -38,7 +39,8 @@ class UsuariosController extends Controller
                 'password' => bcrypt($request->password),
                 'telefono' => $request->telefono,
                 'estado' => $request->estado,
-                'ID_rol' => $request->ID_rol
+                'ID_rol' => $request->ID_rol,
+                'visible' => 1 // agregar visible sin modificar nada más
             ]);
 
             return response()->json(['success' => true]);
@@ -76,24 +78,24 @@ class UsuariosController extends Controller
         }
     }
 
-// Eliminar usuario
-public function EliminarUsuarios($id)
-{
-    try {
-        if ($id == 1) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No se puede eliminar al Administrador General'
-            ]);
+    // Eliminar usuario (soft delete: solo ocultar)
+    public function EliminarUsuarios($id)
+    {
+        try {
+            if ($id == 1) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No se puede eliminar al Administrador General'
+                ]);
+            }
+
+            DB::connection('mysql')->table('usuarios')->where('ID_usuario', $id)->update(['visible' => 0]);
+
+            return response()->json(['success' => true]);
+
+        } catch (Exception $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()]);
         }
-
-        DB::connection('mysql')->table('usuarios')->where('ID_usuario', $id)->delete();
-
-        return response()->json(['success' => true]);
-
-    } catch (Exception $e) {
-        return response()->json(['success' => false, 'error' => $e->getMessage()]);
     }
-}
 
 }

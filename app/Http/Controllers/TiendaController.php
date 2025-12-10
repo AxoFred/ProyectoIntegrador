@@ -17,13 +17,17 @@ class TiendaController extends Controller
     }
 
     // ============================================================
-    // MOSTRAR TIENDAS (JSON)
+    // MOSTRAR TIENDAS (JSON) SOLO VISIBLES
     // ============================================================
     public function MostrarTiendas()
     {
         try {
-            $tiendas = DB::table('tiendas')->get();
+            $tiendas = DB::table('tiendas')
+                ->where('visible', 1)     // Mostrar únicamente las tiendas activas
+                ->get();
+
             return response()->json($tiendas);
+
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
@@ -60,6 +64,7 @@ class TiendaController extends Controller
                 'estado' => $request->estado ?? 'activo',
                 'metodo_pago' => $request->metodo_pago,
                 'ID_usuario_vendedor' => $request->ID_usuario_vendedor,
+                'visible' => 1  // Siempre visible al registrarse
             ]);
 
             return response()->json(['success' => true]);
@@ -91,7 +96,7 @@ class TiendaController extends Controller
                 'redes' => $request->redes,
                 'estado' => $request->estado ?? 'activo',
                 'metodo_pago' => $request->metodo_pago,
-                'ID_usuario_vendedor' => $request->ID_usuario_vendedor,
+                'ID_usuario_vendedor' => $request->ID_usuario_vendedor
             ];
 
             if ($request->hasFile('logo')) {
@@ -101,7 +106,9 @@ class TiendaController extends Controller
                 $data['logo'] = $logoNombre;
             }
 
-            DB::table('tiendas')->where('ID_tienda', $id)->update($data);
+            DB::table('tiendas')
+                ->where('ID_tienda', $id)
+                ->update($data);
 
             return response()->json(['success' => true]);
 
@@ -114,13 +121,17 @@ class TiendaController extends Controller
     }
 
     // ============================================================
-    // ELIMINAR TIENDA
+    // ELIMINAR TIENDA (SOFT DELETE)
     // ============================================================
     public function EliminarTienda($id)
     {
         try {
-            DB::table('tiendas')->where('ID_tienda', $id)->delete();
+            DB::table('tiendas')
+                ->where('ID_tienda', $id)
+                ->update(['visible' => 0]);   // Ocultar en vez de eliminar
+
             return response()->json(['success' => true]);
+
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
@@ -141,6 +152,7 @@ class TiendaController extends Controller
                 ['id'=>3,'nombre'=>'Efectivo y Transferencia']
             ];
             return response()->json($metodos);
+
         } catch (Exception $e) {
             return response()->json(['success' => false]);
         }
@@ -154,9 +166,11 @@ class TiendaController extends Controller
         try {
             $vendedores = DB::table('usuarios')
                 ->where('ID_rol', 2)
-                ->select('ID_usuario','nombre')
+                ->select('ID_usuario', 'nombre')
                 ->get();
+
             return response()->json($vendedores);
+
         } catch (Exception $e) {
             return response()->json(['success' => false]);
         }
