@@ -14,16 +14,13 @@
     <div class="logo"><h1>SABORYTEC</h1></div>
 
     <nav class="nav">
-      <a href="#">Inicio</a>
-      <a href="#">Explorar</a>
-      <a href="#">Catálogo</a>
-      <a href="#">Compras</a>
-      <a href="#">Pedidos</a>
-      <a href="#">Historial</a>
-      <a href="#">Carrito</a>
+        <a href="{{ route('Binicio') }}">Inicio</a>
+        <a href="{{ route('Bexplorar') }}">Explorar</a>
+        <a href="{{ route('Bcarrito') }}">Carrito</a>
+        <a href="{{ route('Bpedidos') }}">Pedidos</a>
     </nav>
 
-    <button class="login-btn">Mi perfil</button>
+    <button class="login-btn" onclick="window.location.href='{{ url('/login') }}'">IICIAR SESION</button>
   </header>
 
   

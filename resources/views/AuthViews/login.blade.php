@@ -42,6 +42,11 @@
           <input type="password" name="password" placeholder="Contraseña" class="input" required>
         </div>
 
+        <!-- olvido de contraseña -->
+        <div>
+            <a href="#" style="color: white;">¿Olvidaste tu contraseña?</a>
+        </div>
+
         <button class="button" type="submit">
           <span class="button-text">Iniciar sesión</span>
         </button>

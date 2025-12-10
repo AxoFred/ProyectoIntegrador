@@ -110,10 +110,10 @@
                     <option value="Inactivo">Inactivo</option>
                 </select>
 
-                <label>ID Categoría:</label>
+                <label>Categoría:</label>
                 <input type="number" name="ID_categoria" required>
 
-                <label>ID Tienda:</label>
+                <label>Tienda:</label>
                 <input type="number" name="ID_tienda" required>
 
                 <button type="submit" class="btn-azul">Guardar</button>
@@ -153,10 +153,10 @@
                     <option value="Inactivo">Inactivo</option>
                 </select>
 
-                <label>ID Categoría:</label>
+                <label>Categoría:</label>
                 <input type="number" name="ID_categoria" required>
 
-                <label>ID Tienda:</label>
+                <label>Tienda:</label>
                 <input type="number" name="ID_tienda" required>
 
                 <button type="submit" class="btn-azul">Actualizar</button>
@@ -184,7 +184,7 @@
                         <table class="tabla-admin">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    
                                     <th>Imagen</th>
                                     <th>Nombre</th>
                                     <th>Marca</th>
@@ -213,7 +213,7 @@
                 data.forEach(p => {
                     tbody.innerHTML += `
                         <tr>
-                            <td>${p.ID_producto}</td>
+                            
                             <td>${p.imagen ? `<img src="/storage/${p.imagen}" width="60">` : ''}</td>
                             <td>${p.nombre}</td>
                             <td>${p.marca}</td>

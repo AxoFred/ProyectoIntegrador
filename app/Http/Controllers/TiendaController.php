@@ -22,9 +22,8 @@ class TiendaController extends Controller
     public function MostrarTiendas()
     {
         try {
-            $tiendas = DB::connection('mysql')->table('tiendas')->get();
+            $tiendas = DB::table('tiendas')->get();
             return response()->json($tiendas);
-
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
@@ -39,29 +38,33 @@ class TiendaController extends Controller
     public function RegistrarTienda(Request $request)
     {
         try {
-            $logoNombre = null;
+            $request->validate([
+                'nombre' => 'required|string|max:100',
+                'metodo_pago' => 'required|integer|in:1,2,3',
+                'ID_usuario_vendedor' => 'required|integer|exists:usuarios,ID_usuario',
+                'logo' => 'nullable|image|max:2048',
+            ]);
 
+            $logoNombre = null;
             if ($request->hasFile('logo')) {
                 $img = $request->file('logo');
                 $logoNombre = time() . "_" . $img->getClientOriginalName();
-                $img->storeAs('public', $logoNombre);
+                $img->storeAs('public/logos', $logoNombre);
             }
 
-            DB::connection('mysql')->table('tiendas')->insert([
+            DB::table('tiendas')->insert([
                 'nombre' => $request->nombre,
                 'descripcion' => $request->descripcion,
                 'redes' => $request->redes,
                 'logo' => $logoNombre,
-                'estado' => $request->estado,
-                'ID_horario' => $request->ID_horario,
-                'ID_metodo_pago' => $request->ID_metodo_pago,
+                'estado' => $request->estado ?? 'activo',
+                'metodo_pago' => $request->metodo_pago,
                 'ID_usuario_vendedor' => $request->ID_usuario_vendedor,
             ]);
 
             return response()->json(['success' => true]);
 
         } catch (Exception $e) {
-
             return response()->json([
                 'success' => false,
                 'error' => $e->getMessage()
@@ -75,33 +78,34 @@ class TiendaController extends Controller
     public function ActualizarTienda(Request $request, $id)
     {
         try {
+            $request->validate([
+                'nombre' => 'required|string|max:100',
+                'metodo_pago' => 'required|integer|in:1,2,3',
+                'ID_usuario_vendedor' => 'required|integer|exists:usuarios,ID_usuario',
+                'logo' => 'nullable|image|max:2048',
+            ]);
+
             $data = [
                 'nombre' => $request->nombre,
                 'descripcion' => $request->descripcion,
                 'redes' => $request->redes,
-                'estado' => $request->estado,
-                'ID_horario' => $request->ID_horario,
-                'ID_metodo_pago' => $request->ID_metodo_pago,
+                'estado' => $request->estado ?? 'activo',
+                'metodo_pago' => $request->metodo_pago,
                 'ID_usuario_vendedor' => $request->ID_usuario_vendedor,
             ];
 
-            // Si viene un nuevo logo
             if ($request->hasFile('logo')) {
                 $img = $request->file('logo');
                 $logoNombre = time() . "_" . $img->getClientOriginalName();
-                $img->storeAs('public', $logoNombre);
-
+                $img->storeAs('public/logos', $logoNombre);
                 $data['logo'] = $logoNombre;
             }
 
-            DB::connection('mysql')->table('tiendas')
-                ->where('ID_tienda', $id)
-                ->update($data);
+            DB::table('tiendas')->where('ID_tienda', $id)->update($data);
 
             return response()->json(['success' => true]);
 
         } catch (Exception $e) {
-
             return response()->json([
                 'success' => false,
                 'error' => $e->getMessage()
@@ -115,32 +119,13 @@ class TiendaController extends Controller
     public function EliminarTienda($id)
     {
         try {
-            DB::connection('mysql')->table('tiendas')
-                ->where('ID_tienda', $id)
-                ->delete();
-
+            DB::table('tiendas')->where('ID_tienda', $id)->delete();
             return response()->json(['success' => true]);
-
         } catch (Exception $e) {
-
             return response()->json([
                 'success' => false,
                 'error' => $e->getMessage()
             ]);
-        }
-    }
-
-    // ============================================================
-    // SELECT: HORARIOS
-    // ============================================================
-    public function ObtenerHorarios()
-    {
-        try {
-            $horarios = DB::connection('mysql')->table('horarios')->get();
-            return response()->json($horarios);
-
-        } catch (Exception $e) {
-            return response()->json(['success' => false]);
         }
     }
 
@@ -150,9 +135,12 @@ class TiendaController extends Controller
     public function ObtenerMetodosPago()
     {
         try {
-            $metodos = DB::connection('mysql')->table('metodos_pago')->get();
+            $metodos = [
+                ['id'=>1,'nombre'=>'Efectivo'],
+                ['id'=>2,'nombre'=>'Transferencia'],
+                ['id'=>3,'nombre'=>'Efectivo y Transferencia']
+            ];
             return response()->json($metodos);
-
         } catch (Exception $e) {
             return response()->json(['success' => false]);
         }
@@ -164,12 +152,11 @@ class TiendaController extends Controller
     public function ObtenerVendedores()
     {
         try {
-            $vendedores = DB::connection('mysql')->table('usuarios')
-                ->where('ID_rol', 2) // Rol vendedor
+            $vendedores = DB::table('usuarios')
+                ->where('ID_rol', 2)
+                ->select('ID_usuario','nombre')
                 ->get();
-
             return response()->json($vendedores);
-
         } catch (Exception $e) {
             return response()->json(['success' => false]);
         }

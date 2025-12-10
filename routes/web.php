@@ -18,12 +18,32 @@ use App\Http\Controllers\TiendaController;
 Route::get('/', function () {
     return view('welcome.bienvenida');
 });
+// ================================
+// HEADER INVITADOS
+// ================================
+Route::get('/Binicio', function () {
+    return view('Welcome.Binicio'); // Otra vista de invitado
+})->name('Binicio');
 
-// Login
+Route::get('/Bexplorar', function () {
+    return view('Welcome.Bexplorar'); // Otra vista de invitado
+})->name('Bexplorar');
+
+Route::get('/Bcarrito', function () {
+    return view('Welcome.Bcarrito'); // Otra vista de invitado
+})->name('Bcarrito');
+
+Route::get('/Bpedidos', function () {
+    return view('Welcome.Bpedidos'); // Otra vista de invitado
+})->name('Bpedidos');
+
+
+// ================================
+// LOGIN
+// ================================
 Route::get('/login', function () {
     return view('AuthViews.login');
 });
-
 Route::post('/autentificacion', [AutentificacionController::class, 'Autentificacion']);
 Route::get('/inicio', [AutentificacionController::class, 'Inicio']);
 
@@ -61,15 +81,19 @@ Route::post('/productos/actualizar/{id}', [ProductController::class, 'Actualizar
 Route::delete('/productos/eliminar/{id}', [ProductController::class, 'EliminarProductos'])->name('productos.eliminar');
 
 
+// ================================z
+// CRUD TIENDAS
 // ================================
-//tiendas
 Route::get('/tiendas', [TiendaController::class, 'TiendasVista'])->name('tiendas.vista');
 Route::get('/tiendas/mostrar', [TiendaController::class, 'MostrarTiendas'])->name('tiendas.mostrar');
 Route::post('/tiendas/registrar', [TiendaController::class, 'RegistrarTienda'])->name('tiendas.registrar');
 Route::post('/tiendas/actualizar/{id}', [TiendaController::class, 'ActualizarTienda'])->name('tiendas.actualizar');
 Route::delete('/tiendas/eliminar/{id}', [TiendaController::class, 'EliminarTienda'])->name('tiendas.eliminar');
 
-Route::get('/tiendas/obtener-horarios', [TiendaController::class, 'ObtenerHorarios']);
-Route::get('/tiendas/obtener-metodos', [TiendaController::class, 'ObtenerMetodosPago']);
-Route::get('/tiendas/obtener-vendedores', [TiendaController::class, 'ObtenerVendedores']);
+// Rutas para selects dinámicos en JS
+Route::get('/tiendas/obtener-metodos-pago', [TiendaController::class, 'ObtenerMetodosPago'])->name('tiendas.obtenerMetodosPago');
+Route::get('/tiendas/obtener-vendedores', [TiendaController::class, 'ObtenerVendedores'])->name('tiendas.obtenerVendedores');
 
+// ================================
+// EMAIL
+// ================================

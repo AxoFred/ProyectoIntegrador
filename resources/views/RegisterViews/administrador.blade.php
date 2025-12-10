@@ -85,6 +85,7 @@
 </div>
 
 <!-- ======================== VARIABLES GLOBALES ========================= -->
+<!-- VARIABLES GLOBALES -->
 <script>
     const csrf = "{{ csrf_token() }}";
 
@@ -99,11 +100,30 @@
         mostrar: "{{ route('tiendas.mostrar') }}",
         registrar: "{{ route('tiendas.registrar') }}",
         actualizar: "/tiendas/actualizar/",
-        eliminar: "/tiendas/eliminar/"
+        eliminar: "/tiendas/eliminar/",
+        obtenerVendedores: "{{ route('tiendas.obtenerVendedores') }}"
     };
+
+
+</script>
+<script src="{{ asset('js/usuarios.js') }}"></script>
+<script src="{{ asset('js/tiendas.js') }}"></script>
+
+<script>
+function mostrarSeccion(seccion){
+    if(seccion === "usuarios"){
+        mostrarSeccionUsuarios();
+    }
+    else if(seccion === "tiendas"){
+        mostrarSeccionTiendas();
+    }
+    else {
+        document.getElementById("contenido-dinamico").innerHTML =
+            "<p>Esta sección aún no está disponible.</p>";
+    }
+}
 </script>
 
-<script src="{{ asset('js/AdminGeneral.js') }}"></script>
 
 
 </body>
