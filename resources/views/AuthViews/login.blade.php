@@ -43,8 +43,9 @@
         </div>
 
         <!-- olvido de contraseña -->
+
         <div>
-            <a href="#" style="color: white;">¿Olvidaste tu contraseña?</a>
+            <a href="{{ route('password.forgot') }}" style="color: white;">¿Olvidaste tu contraseña?</a>
         </div>
 
         <button class="button" type="submit">

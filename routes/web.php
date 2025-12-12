@@ -10,7 +10,7 @@ use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TiendaController;
-
+use App\Http\Controllers\ResetPasswordController;
 
 // ================================
 // RUTAS GENERALES
@@ -94,6 +94,23 @@ Route::delete('/tiendas/eliminar/{id}', [TiendaController::class, 'EliminarTiend
 Route::get('/tiendas/obtener-metodos-pago', [TiendaController::class, 'ObtenerMetodosPago'])->name('tiendas.obtenerMetodosPago');
 Route::get('/tiendas/obtener-vendedores', [TiendaController::class, 'ObtenerVendedores'])->name('tiendas.obtenerVendedores');
 
+
 // ================================
 // EMAIL
 // ================================
+
+
+Route::get('/olvide-password', [ResetPasswordController::class, 'showEmailForm'])
+    ->name('password.request');
+
+Route::post('/olvide-password', [ResetPasswordController::class, 'sendResetLink'])
+    ->name('password.email');
+
+Route::get('/restablecer-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+    ->name('password.reset');
+
+Route::post('/restablecer-password', [ResetPasswordController::class, 'resetPassword'])
+    ->name('password.update');
+
+Route::get('/password/forgot', [ResetPasswordController::class, 'showEmailForm'])
+    ->name('password.forgot');
